@@ -14,16 +14,36 @@ public class Config extends YamlConfiguration
     private String fileName;
     private File   configFile;
 
+    /**
+     * Create a new Config.
+     *
+     * @param plugin The class extending JavaPlugin.
+     * @param fileName The name of the file being created.
+     */
     public Config(Plugin plugin, String fileName)
     {
         new Config(plugin, fileName, new File(plugin.getDataFolder(), fileName));
     }
 
+    /**
+     * Creates a new Config.
+     *
+     * @param plugin The class extending JavaPlugin.
+     * @param fileName The name of the file being created.
+     * @param parent The path of the parent
+     */
     public Config(Plugin plugin, String fileName, String parent)
     {
         new Config(plugin, fileName, new File(plugin.getDataFolder() + File.separator + parent, fileName));
     }
 
+    /**
+     * Creates a new Config.
+     *
+     * @param plugin The class extending JavaPlugin.
+     * @param fileName The name of the file being created.
+     * @param file
+     */
     public Config(Plugin plugin, String fileName, File file)
     {
         this.plugin     = plugin;
@@ -33,6 +53,9 @@ public class Config extends YamlConfiguration
         create();
     }
 
+    /**
+     * Saves the FileConfiguration to the file.
+     */
     public void save()
     {
         try
@@ -45,6 +68,9 @@ public class Config extends YamlConfiguration
         }
     }
 
+    /**
+     * Load the contents of the file to the FileConfiguration.
+     */
     public void reload()
     {
         try
@@ -57,6 +83,9 @@ public class Config extends YamlConfiguration
         }
     }
 
+    /**
+     * Creates the file, or copies it if the jar contains it.
+     */
     private void create()
     {
         try
