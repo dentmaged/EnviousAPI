@@ -42,7 +42,7 @@ public class Config extends YamlConfiguration
      *
      * @param plugin The class extending JavaPlugin.
      * @param fileName The name of the file being created.
-     * @param file
+     * @param file The output file.
      */
     public Config(Plugin plugin, String fileName, File file)
     {

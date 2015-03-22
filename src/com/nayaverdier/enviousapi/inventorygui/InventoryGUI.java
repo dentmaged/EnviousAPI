@@ -106,7 +106,7 @@ public class InventoryGUI implements Listener
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onInventoryClick(InventoryClickEvent e)
     {
-        if (e.getInventory().equals(inventory))
+        if (e.getInventory().equals(inventory) && e.getRawSlot() < inventory.getSize())
         {
             e.setCancelled(true);
             IClickAction action = actions.get(e.getRawSlot());
