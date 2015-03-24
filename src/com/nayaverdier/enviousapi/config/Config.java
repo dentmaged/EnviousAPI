@@ -22,7 +22,7 @@ public class Config extends YamlConfiguration
      */
     public Config(Plugin plugin, String fileName)
     {
-        new Config(plugin, fileName, new File(plugin.getDataFolder(), fileName));
+        this(plugin, fileName, new File(plugin.getDataFolder(), fileName + (fileName.endsWith(".yml") ? "" : ".yml")));
     }
 
     /**
@@ -34,7 +34,7 @@ public class Config extends YamlConfiguration
      */
     public Config(Plugin plugin, String fileName, String parent)
     {
-        new Config(plugin, fileName, new File(plugin.getDataFolder() + File.separator + parent, fileName));
+        this(plugin, fileName, new File(plugin.getDataFolder() + File.separator + parent, fileName + (fileName.endsWith(".yml") ? "" : ".yml")));
     }
 
     /**
@@ -44,10 +44,10 @@ public class Config extends YamlConfiguration
      * @param fileName The name of the file being created.
      * @param file The output file.
      */
-    public Config(Plugin plugin, String fileName, File file)
+    private Config(Plugin plugin, String fileName, File file)
     {
         this.plugin     = plugin;
-        this.fileName   = fileName;
+        this.fileName   = fileName + (fileName.endsWith(".yml") ? "" : ".yml");
         this.configFile = file;
 
         create();
