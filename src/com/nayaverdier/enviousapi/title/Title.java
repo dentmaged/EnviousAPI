@@ -33,9 +33,7 @@ public class Title
      */
     public void sendTitle(Player p, int fadeIn, int stay, int fadeOut, String title)
     {
-        PlayerConnection playerConnection = ((CraftPlayer) p).getHandle().playerConnection;
-        PacketPlayOutTitle packetPlayOutTimes = new PacketPlayOutTitle(EnumTitleAction.TIMES, null, fadeIn, stay, fadeOut);
-        playerConnection.sendPacket(packetPlayOutTimes);
+        sendAll(p, fadeIn, stay, fadeOut, title, null, null, null, null);
     }
 
     /**
