@@ -3,6 +3,7 @@
 A very intuitive, easy to use library with many features.
 
 Features:
+
     • Config
     • InventoryGUI
     • ItemStackBuilder
