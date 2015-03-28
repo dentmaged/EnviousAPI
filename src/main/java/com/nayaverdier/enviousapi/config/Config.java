@@ -93,7 +93,7 @@ public class Config extends YamlConfiguration
         }
         catch (IOException | InvalidConfigurationException e)
         {
-            System.out.println("Error reloading config file \"" + fileName + "\"!");
+            plugin.getLogger().log(Level.SEVERE, "Error creating config file \"" + fileName + "\"!");
         }
     }
 
@@ -125,7 +125,7 @@ public class Config extends YamlConfiguration
         catch (Exception e)
         {
             e.printStackTrace();
-            System.out.println("Error creating config file \"" + fileName + "\"!");
+            plugin.getLogger().log(Level.SEVERE, "Error creating config file \"" + fileName + "\"!");
         }
     }
 
@@ -137,7 +137,7 @@ public class Config extends YamlConfiguration
         }
         catch (IOException e)
         {
-            System.out.println("Error copying file with path " + resourcePath + "!");
+            plugin.getLogger().log(Level.SEVERE, "Error copying file with path " + resourcePath + "!");
         }
     }
 }
