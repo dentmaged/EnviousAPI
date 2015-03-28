@@ -9,6 +9,7 @@ Features:
     • ItemStackBuilder
     • Titles
     • JSONBuilder (Coming Soon)
-    • Please suggest anything else you would like to be added!
 
-I am always looking for things to add to this, so feel free to drop any suggestions.
+Please suggest anything else you would like to be added! 
+You can make suggestions on this thread on Bukkit:
+http://bukkit.org/threads/enviousapi-config-itemstackbuilder-inventorygui.349855/
