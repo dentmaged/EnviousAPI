@@ -7,6 +7,7 @@ import org.bukkit.plugin.Plugin;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.logging.Level;
 
 /**
  * Copyright (c) 2015 nverdier
@@ -77,7 +78,7 @@ public class Config extends YamlConfiguration
         }
         catch (IOException e)
         {
-            System.out.println("Error saving config file \"" + fileName + "\"!");
+            plugin.getLogger().log(Level.SEVERE, "Error saving config file \"" + fileName + "\"!");
         }
     }
 
