@@ -1,8 +1,8 @@
 package com.nayaverdier.enviousapi.title;
 
-import net.minecraft.server.v1_8_R1.*;
+import net.minecraft.server.v1_8_R2.*;
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
@@ -105,27 +105,27 @@ public class Title
 
         if (title != null && subtitle != null)
         {
-            PacketPlayOutTitle packetPlayOutTimes = new PacketPlayOutTitle(EnumTitleAction.TIMES, null, fadeIn, stay, fadeOut);
+            PacketPlayOutTitle packetPlayOutTimes = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.TIMES, null, fadeIn, stay, fadeOut);
             playerConnection.sendPacket(packetPlayOutTimes);
         }
 
         if (title != null)
         {
-            IChatBaseComponent titleComponent = ChatSerializer.a("{\"text\":\"" + ChatColor.translateAlternateColorCodes('&', title) + "\"}");
-            PacketPlayOutTitle titlePacket = new PacketPlayOutTitle(EnumTitleAction.TITLE, titleComponent);
+            IChatBaseComponent titleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + ChatColor.translateAlternateColorCodes('&', title) + "\"}");
+            PacketPlayOutTitle titlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.TITLE, titleComponent);
             playerConnection.sendPacket(titlePacket);
         }
 
         if (subtitle != null)
         {
-            IChatBaseComponent subtitleComponent = ChatSerializer.a("{\"text\":\"" + ChatColor.translateAlternateColorCodes('&', subtitle) + "\"}");
-            PacketPlayOutTitle subtitlePacket = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE, subtitleComponent);
+            IChatBaseComponent subtitleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + ChatColor.translateAlternateColorCodes('&', subtitle) + "\"}");
+            PacketPlayOutTitle subtitlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.SUBTITLE, subtitleComponent);
             playerConnection.sendPacket(subtitlePacket);
         }
 
         if (actionText != null)
         {
-            IChatBaseComponent actionComponent = ChatSerializer.a("{\"text\":\"" + ChatColor.translateAlternateColorCodes('&', actionText) + "\"}");
+            IChatBaseComponent actionComponent = IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + ChatColor.translateAlternateColorCodes('&', actionText) + "\"}");
             PacketPlayOutChat actionPacket = new PacketPlayOutChat(actionComponent, (byte) 2);
             playerConnection.sendPacket(actionPacket);
         }
@@ -135,8 +135,8 @@ public class Title
             header = header == null ? "" : ChatColor.translateAlternateColorCodes('&', header);
             footer = footer == null ? "" : ChatColor.translateAlternateColorCodes('&', footer);
 
-            IChatBaseComponent headerComponent = ChatSerializer.a("{\"text\":\"" + header + "\"}");
-            IChatBaseComponent footerComponent = ChatSerializer.a("{\"text\":\"" + footer + "\"}");
+            IChatBaseComponent headerComponent = IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + header + "\"}");
+            IChatBaseComponent footerComponent = IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + footer + "\"}");
 
             PacketPlayOutPlayerListHeaderFooter packetTablist = new PacketPlayOutPlayerListHeaderFooter(headerComponent);
             try
