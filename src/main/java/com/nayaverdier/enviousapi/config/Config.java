@@ -1,5 +1,6 @@
 package com.nayaverdier.enviousapi.config;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
@@ -127,6 +128,17 @@ public class Config extends YamlConfiguration
             e.printStackTrace();
             plugin.getLogger().log(Level.SEVERE, "Error creating config file \"" + fileName + "\"!");
         }
+    }
+
+    /**
+     *
+     * @param path The path to get the colored string from.
+     * @return The string at the specified path, with color codes pre-translated.
+     */
+    public String getColored(String path)
+    {
+        String atPath = getString(path);
+        return atPath == null ? null : ChatColor.translateAlternateColorCodes('&', atPath);
     }
 
     private void copy(String resourcePath, File parent)
