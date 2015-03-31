@@ -128,9 +128,10 @@ public class Config extends YamlConfiguration
     }
 
     /**
+     * Gets a string from the config and translates all of the colors.
      *
      * @param path The path to get the colored string from.
-     * @return The string at the specified path, with color codes pre-translated.
+     * @return The string from the config at specified path, with replaced colors.
      */
     public String getColored(String path)
     {
