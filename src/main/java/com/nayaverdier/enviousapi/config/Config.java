@@ -122,7 +122,6 @@ public class Config extends YamlConfiguration
         }
         catch (Exception e)
         {
-            e.printStackTrace();
             plugin.getLogger().log(Level.SEVERE, "Error creating config file \"" + fileName + "\"!");
         }
     }
