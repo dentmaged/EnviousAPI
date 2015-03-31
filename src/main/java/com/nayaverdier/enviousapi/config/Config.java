@@ -98,9 +98,6 @@ public class Config extends YamlConfiguration
         }
     }
 
-    /**
-     * Creates the file, or copies it if the jar contains it.
-     */
     private void create()
     {
         try
