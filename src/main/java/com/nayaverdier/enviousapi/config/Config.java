@@ -1,5 +1,6 @@
 package com.nayaverdier.enviousapi.config;
 
+import org.apache.commons.io.FileUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -7,7 +8,6 @@ import org.bukkit.plugin.Plugin;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.logging.Level;
 
 /**
@@ -142,7 +142,7 @@ public class Config extends YamlConfiguration
     {
         try
         {
-            Files.copy(plugin.getResource(resourcePath), new File(parent, resourcePath).toPath());
+            FileUtils.copyInputStreamToFile(plugin.getResource(resourcePath), new File(parent, resourcePath));
         }
         catch (IOException e)
         {
