@@ -36,8 +36,8 @@ import java.util.Map;
  */
 public class InventoryGUI implements Listener
 {
-    private Inventory                  inventory;
-    private Map<Integer, IClickAction> actions;
+    private Inventory             inventory;
+    private Map<Integer, IAction> actions;
 
     /**
      * Creates an InventoryGUI with a title and certain amount of rows.
@@ -49,20 +49,20 @@ public class InventoryGUI implements Listener
     public InventoryGUI(Plugin plugin, String title, int rows)
     {
         this.inventory = Bukkit.createInventory(null, rows * 9, ChatColor.translateAlternateColorCodes('&', title));
-        this.actions   = new HashMap<>();
+        this.actions = new HashMap<>();
 
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     /**
-     * Puts an ItemStack in a certain slot, and adds an IClickAction to it.
+     * Puts an ItemStack in a certain slot, and adds an IAction to it.
      *
      * @param slot        The slot you want to put the ItemStack in.
      * @param itemStack   The ItemStack you are adding.
-     * @param clickAction The IClickAction that runs when the ItemStack is clicked.
+     * @param clickAction The IAction that runs when the ItemStack is clicked.
      * @return this (for method chaining)
      */
-    public InventoryGUI setItem(int slot, ItemStack itemStack, IClickAction clickAction)
+    public InventoryGUI setItem(int slot, ItemStack itemStack, IAction clickAction)
     {
         slot = slot > inventory.getSize() ? slot % inventory.getSize() : slot;
         inventory.setItem(slot, itemStack);
@@ -71,11 +71,11 @@ public class InventoryGUI implements Listener
     }
 
     /**
-     * @param slot   The slot to set the IClickAction in.
-     * @param action The IClickAction that runs when the specified slot is clicked.
+     * @param slot   The slot to set the IAction in.
+     * @param action The IAction that runs when the specified slot is clicked.
      * @return this (for method chaining)
      */
-    public InventoryGUI setAction(int slot, IClickAction action)
+    public InventoryGUI setAction(int slot, IAction action)
     {
         if (action != null)
         {
@@ -91,10 +91,10 @@ public class InventoryGUI implements Listener
     /**
      * Sets the action that will happen when the Inventory is opened.
      *
-     * @param action The IClickAction that runs when the Inventory is opened.
+     * @param action The IAction that runs when the Inventory is opened.
      * @return this (for method chaining)
      */
-    public InventoryGUI setOpenAction(IClickAction action)
+    public InventoryGUI setOpenAction(IAction action)
     {
         if (action != null)
         {
@@ -110,10 +110,10 @@ public class InventoryGUI implements Listener
     /**
      * Sets the action that will happen the the Inventory is closed.
      *
-     * @param action The IClickAction that runs when the Inventory is closed.
+     * @param action The IAction that runs when the Inventory is closed.
      * @return this (for method chaining)
      */
-    public InventoryGUI setCloseAction(IClickAction action)
+    public InventoryGUI setCloseAction(IAction action)
     {
         if (action != null)
         {
@@ -184,7 +184,7 @@ public class InventoryGUI implements Listener
         if (e.getInventory().equals(inventory) && e.getRawSlot() < inventory.getSize())
         {
             e.setCancelled(true);
-            IClickAction action = actions.get(e.getRawSlot());
+            IAction action = actions.get(e.getRawSlot());
             if (action != null)
             {
                 action.execute((Player) e.getWhoClicked(),
@@ -200,7 +200,7 @@ public class InventoryGUI implements Listener
     {
         if (e.getInventory().equals(inventory))
         {
-            IClickAction action = actions.get(-1);
+            IAction action = actions.get(-1);
             if (action != null)
             {
                 action.execute((Player) e.getPlayer(), e.getInventory(), -1, null);
@@ -213,7 +213,7 @@ public class InventoryGUI implements Listener
     {
         if (e.getInventory().equals(inventory))
         {
-            IClickAction action = actions.get(-2);
+            IAction action = actions.get(-2);
             if (action != null)
             {
                 action.execute((Player) e.getPlayer(), e.getInventory(), -1, null);
