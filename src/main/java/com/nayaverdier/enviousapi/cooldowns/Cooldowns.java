@@ -69,7 +69,7 @@ public class Cooldowns
      * @param object The object to get the remaining time for
      * @return The remaining time, in the default TimeUnit
      */
-    private long getRemaining(Object object)
+    public long getRemaining(Object object)
     {
         return getRemaining(object, defaultUnit);
     }
@@ -81,7 +81,7 @@ public class Cooldowns
      * @param unit The TimeUnit for the time to be
      * @return The remaining time, in the specified TimeUnit
      */
-    private long getRemaining(Object object, TimeUnit unit)
+    public long getRemaining(Object object, TimeUnit unit)
     {
         if (checkCooldown(object))
             return -1;
