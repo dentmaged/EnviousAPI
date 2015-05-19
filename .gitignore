@@ -1,10 +1,9 @@
-
-*.xml
-
+target
+*.jar
 *.class
 
-*.MF
+.classpath
+.project
+.settings
 
-*.properties
-
-*.jar
+.DS_Store
